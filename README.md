@@ -1,26 +1,30 @@
-# Naga Sai — 3D Interactive Portfolio
+# Naga Sai — Scroll Driven 3D Portfolio
 
-A static Vercel-ready portfolio with a Three.js interactive 3D portrait. The portrait is built from the supplied photo/stylized render and wrapped on a 3D head shell; career/project stickers are positioned on the face and rotate with it.
+A single-page Three.js portfolio where the character rotates as the visitor scrolls through Home, Experience, Education, Projects, Skills and Contact. Sponsor-style logos are attached to the character's outfit so they rotate with the body.
 
 ## Run locally
 
-Because the page imports Three.js from jsDelivr, use a local static server rather than opening the HTML directly:
+Because this uses ES modules, serve the folder with any static server.
 
 ```bash
-python3 -m http.server 4173
+python3 -m http.server 5173
 ```
 
-Then open http://localhost:4173
+Open `http://localhost:5173`.
 
-## Deploy
+## Deploy to Vercel
 
-Upload the folder to GitHub and import the repository into Vercel. No build command is required; `index.html` is the entry point.
+Upload this folder to GitHub and import the repository into Vercel. No build command is required; `index.html` is the entry point.
 
-## Interaction
+## Replace the avatar
 
-- Scroll to Work / Education / Projects to change the active 3D sticker set.
-- Click a company/project chapter to rotate the head to its angle.
-- Drag the 3D portrait horizontally to rotate it manually.
-- Work mode shows Salesforce, Walmart and Tekion stickers.
-- Education mode shows BITS Goa.
-- Projects mode shows RAG, Voice AI and MCP stickers.
+The current build uses `assets/face.png` as a face plate on a procedural 3D body. For a true photorealistic full-body 3D model, replace the procedural avatar with a `.glb/.gltf` character and keep the same scroll-state system. The sponsor patches can then be converted to GLTF decals/materials attached to the jacket, pants and backpack.
+
+## Scroll states
+
+- Home: front
+- Experience: front → 3/4 → side for Salesforce → Walmart → Tekion
+- Education: side/rear view
+- Projects: rear view
+- Skills: rear 3/4 / opposite side
+- Contact: return toward front
